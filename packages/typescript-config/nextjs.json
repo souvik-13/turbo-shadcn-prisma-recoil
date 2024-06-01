@@ -10,7 +10,8 @@
     "jsx": "preserve",
     "noEmit": true,
     "paths": {
-      "@ui/*": ["../../packages/ui/src/*"]
+      "@ui/*": ["../../packages/ui/src/*"],
+      "@db/*": ["../../packages/db/src/*"],
     }
   }
 }

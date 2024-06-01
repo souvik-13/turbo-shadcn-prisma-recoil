@@ -1,0 +1,7 @@
+import { useRecoilValue } from "recoil";
+import { {{camelCase name}}Atom } from "../atoms/{{camelCase name}}";
+
+export const use{{pascalCase name}} = () => {
+  const value = useRecoilValue({{camelCase name}}Atom);
+  return value;
+};

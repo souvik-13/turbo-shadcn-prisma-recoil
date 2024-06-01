@@ -1,0 +1,8 @@
+{
+  "extends": ["//"],
+  "pipeline": {
+    "ui:add": {
+      "cache": false
+    }
+  }
+}

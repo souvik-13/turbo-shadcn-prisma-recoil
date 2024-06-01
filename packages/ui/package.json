@@ -9,6 +9,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@turbo/gen": "^1.13.3",
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.46",
     "autoprefixer": "^10.4.17",
@@ -21,6 +22,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.314.0",
+    "next-themes": "^0.3.0",
+    "sonner": "^1.4.41",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
