@@ -1,6 +1,9 @@
 import { PlopTypes } from "@turbo/gen";
+import path from "path";
 
 // Learn more about Turborepo Generators at https://turbo.build/repo/docs/core-concepts/monorepos/code-generation
+
+const thisDir = path.join(__dirname, "..", "..");
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   // A simple generator to add a new React component to the internal UI library
@@ -16,7 +19,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "list",
         name: "componentType",
         message: "What type of component do you want to create?",
-        choices: ["custom", "shadcn"],
+        choices: ["shadcn", "custom"],
         default: "shadcn",
       },
     ],
@@ -29,23 +32,22 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       if (data?.componentType === "custom") {
         actions.push({
           type: "add",
-          path: "src/{{kebabCase name}}.tsx",
+          path: "src/components/custom/{{kebabCase name}}.tsx",
           templateFile: "templates/component.hbs",
         });
-        actions.push({
-          type: "append",
-          path: "package.json",
-          pattern: /"exports": {(?<insertion>)/g,
-          template: '"./{{kebabCase name}}": "./src/{{kebabCase name}}.tsx",',
-        });
-      } else {
+        // actions.push({
+        //   type: "append",
+        //   path: "package.json",
+        //   pattern: /"exports": {(?<insertion>)/g,
+        //   template:
+        //     '\t\t"./{{kebabCase name}}": "./src/components/custom/{{kebabCase name}}.tsx",',
+        // });
+      } else if (data?.componentType === "shadcn") {
         const execSync = require("child_process").execSync;
-        execSync(
-          `pnpm --dir packages/ui dlx shadcn-ui@latest add ${data?.name}`,
-          {
-            stdio: "inherit",
-          },
-        );
+        execSync(`pnpm dlx shadcn-ui@latest add ${data?.name}`, {
+          cwd: thisDir,
+          stdio: "inherit",
+        });
       }
 
       return actions;

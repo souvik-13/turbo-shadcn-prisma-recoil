@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@repo/ui/components/ui/button";
+import { Label } from "@repo/ui/components/custom/label";
 import { useName, useBalance } from "@repo/store/hooks";
 
 export default function Page() {
@@ -10,6 +11,7 @@ export default function Page() {
       <h1 className="text-4xl font-bold">
         {name} : {balance}
       </h1>
+      <Label />
       <Button>Click me</Button>
     </main>
   );
